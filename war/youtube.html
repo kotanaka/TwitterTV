@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+		<script type="text/javascript" src="youtube.js"></script>
+        <title>Untitled Document</title>
+    </head>
+    <body>
+    	<div id="player"></div>
+		<script type="text/javascript">
+		    var flashvars = {};
+			var params = { allowScriptAccess: "always" };
+    		var atts = { id: "myytplayer" };
+    		//swfobject.embedSWF("http://www.youtube.com/v/9YEEl52u8XE?autoplay=1", "player", "560", "345", "9.0.0","", flashvars, params, attributes);
+			swfobject.embedSWF("http://www.youtube.com/v/9YEEl52u8XE?enablejsapi=1&playerapiid=ytplayer",
+			 "player", "560", "345", "9.0.0","", flashvars, params, atts);
+			 
+			function callback(newState) {
+				if (newState == 0) {
+					alert("end");	
+				}
+			}
+		
+			function onYouTubePlayerReady(playerId) {
+				//var ytplayer = document.getElementById("myytplayer");
+				(function($) {
+					$("#myytplayer")[0].addEventListener("onStateChange", "callback");
+					$("#myytplayer")[0].playVideo();
+				})(jQuery);
+    		}
+
+		</script>
+    </body>
+</html>

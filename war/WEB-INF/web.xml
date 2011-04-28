@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	<servlet>
+		<servlet-name>BoTV</servlet-name>
+		<servlet-class>com.gmail.kotanaka.botv.BoTVServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BoTV</servlet-name>
+		<url-pattern>/botv</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>TwitterTimelineServlet</servlet-name>
+		<servlet-class>com.gmail.kotanaka.botv.TwitterTimelineServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TwitterTimelineServlet</servlet-name>
+		<url-pattern>/twitter_timeline</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>TwitterLoginServlet</servlet-name>
+		<servlet-class>com.gmail.kotanaka.botv.TwitterLoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TwitterLoginServlet</servlet-name>
+		<url-pattern>/twitter_login</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>TwitterAuthenticated</servlet-name>
+		<servlet-class>com.gmail.kotanaka.botv.TwitterAuthHandlerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TwitterAuthenticated</servlet-name>
+		<url-pattern>/twitter_authenticated</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+	<security-constraint>
+		<web-resource-collection>
+			<url-pattern>/botv</url-pattern>
+			<url-pattern>/twitter_login</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>*</role-name>
+		</auth-constraint>
+	</security-constraint>
+</web-app>
